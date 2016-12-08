@@ -1,0 +1,154 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<title>presentor.js</title>
+		<link rel="stylesheet" href="presentor.css">
+		<script src="presentor.js" type="text/javascript"></script>
+		<style>
+			.presentor_slide_custom {
+				background-color: #2f0404;
+			}
+			.presentor_title_custom {
+				background-color: #e45a5a;
+			}
+			.presentor_slide_custom > .presentor_content_custom {
+				color: white;
+			}
+		</style>
+		<script>
+			document.addEventListener( "DOMContentLoaded", function(event) {
+				var ppt = window.presentor('presentor');
+				var noOfSlide = 6;
+				var effectList = ppt.getRegisteredEffects();
+				ppt.setCyclicSideShow(true);
+
+				for(var i = 1; i < noOfSlide + 1; i++) {
+					ppt.addSlide("slide" + i);
+				}
+
+				ppt.initSlideShow(effectList[Math.floor(Math.random() * effectList.length)]);
+				ppt.startSlideShow({autoNavigationControl: true, timeForTransition: 4000});
+				/*
+				function showSlide() {
+					setTimeout(function() {
+						ppt.gotoNextSlide(effectList[Math.floor(Math.random() * effectList.length)]);
+						showSlide();			
+					}, 3000);
+				}
+				showSlide();
+				*/
+			});
+		</script>
+	</head>
+	<body>
+		<div id='presentor' width="100%" height="400px">
+			<div id="slide1">
+				<div id='slide1.title'>presentor.js</div>
+				<div id='slide1.content'>
+					<b>presentor.js</b> is a modern <u>presentation framework</u> built using Javascript and CSS3 for the web. 
+					This is easy to use and can be customized to your needs.<br><br>
+					<div align="right">Author: <b>Praveen Nair</b>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</div>
+			</div>
+			<div id="slide2">
+				<div id='slide2.title'>presentor.js Effects</div>
+				<div id='slide2.content'>
+					<b>presentor.js</b> supports the following built-in effects:<br><br>
+					<table width="100%" style="font-size: inherit;">
+						<tr>
+							<td>
+								<ul>
+									<li>hide</li><li>slide_left</li><li>slide_right</li><li>slide_left_V1</li>
+									<li>slide_right_V1</li><li>slide_left_V2</li><li>slide_right_V2<li>slide_left_V3</li>
+									<li>slide_right_V3</li>
+								</ul>
+							</td>
+							<td>
+								<ul>
+									<li>slide_up</li><li>slide_down</li><li>slide_up_V1</li><li>slide_down_V1</li>
+									<li>slide_up_V2</li><li>slide_down_V2</li><li>slide_up_V3</li><li>slide_down_V3</li>
+									<li>fade</li>
+								</ul>
+							</td>
+							<td>
+								<ul>
+									<li>flip_horizontal</li><li>flip_vertical</li><li>flip_rotate</li><li>zoom_in</li><li>zoom_out</li>
+									<li>zoom_in_out</li><li>zoom_out_in</li><li>presentor_effect_01</li>
+								</ul>
+							</td>
+						</tr>
+					</table>						
+				</div>
+			</div>
+			<div id="slide3">
+				<div id='slide3.title'>Adding a Slide using HTML</div>
+				<div id='slide3.content'>
+					    &nbsp;&nbsp;&nbsp;&nbsp;&lt;div id='presentor' width=&quot;100%&quot; height=&quot;400px&quot;&gt; 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id=&quot;slide1&quot;&gt; 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id='slide1.title'&gt;Slide 1&lt;/div&gt; 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id='slide1.content'&gt;Sample Content&lt;/div&gt; 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt; 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id=&quot;slide2&quot;&gt; 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id='slide2.title'&gt;Slide 1&lt;/div&gt; 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id='slide2.content'&gt;Sample Content&lt;/div&gt; 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt; 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+					<br>Create a html div and ensure to give a unique ID. Place the slides in a div container. That it! Next initialize the presetor via javascript.<br>
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;script&gt; 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;document.addEventListener( &quot;DOMContentLoaded&quot;, function(event) {
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var ppt = window.presentor('presentor'); 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ppt.setCyclicSideShow(true); 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ppt.addSlide(&quot;slide1&quot;); 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ppt.addSlide(&quot;slide2&quot;); 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ppt.initSlideShow('my_slide', 'fade'); 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//Use setTimeout / Events to trigger the next slide to be shown. 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setTimeout(function() { 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ppt.gotoNextSlide('zoom_out_in'); 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}, 4000); }); 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;
+				</div>
+			</div>
+			<div id="slide4">
+				<div id='slide4.title'>Adding a Slide using Javascript</div>
+				<div id='slide4.content'>
+					Want to dynamically add slide using JS? Here is how:<br><br>
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;script&gt; 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;document.addEventListener( &quot;DOMContentLoaded&quot;, function(event) { 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var ppt = window.presentor('presentor'); 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ppt.createDynamicSlide({ 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slideId: 'dyn_slide', 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slideTitle: 'This is a dynamic Slide 1', 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slideContent: 'The content for this slide is created Dynamically.' }); 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ppt.initSlideShow('dyn_slide', 'fade'); 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;}); 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;
+				</div>
+			</div>
+			<div id="slide5" class="presentor_slide_custom">
+				<div id='slide5.title' class="presentor_title_custom">Add Customized Slide</div>
+				<div id='slide5.content' class="presentor_content_custom">
+					Add Customized slide in between by adding your own CSS Class to the Divs. Here's how:<br><br>
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id=&quot;slide1&quot; class=&quot;presentor_slide_custom&quot;&gt; 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id='slide1.title' class=&quot;presentor_title_custom&quot;&gt;Add Customized Slide&lt;/div&gt; 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id='slide1.content' class=&quot;presentor_content_custom&quot;&gt; Add Customized slide in between by adding your own CSS Class to the Divs. &lt;/div&gt; 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+				</div>
+			</div>
+			<div id="slide6">
+				<div id='slide6.title'>Want More Effects?</div>
+				<div id='slide6.content'>
+					Not happy with the built-in effects? You can create your own effects and register it with presentor.js<br>
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;script&gt; 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;document.addEventListener( &quot;DOMContentLoaded&quot;, function(event) { 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var ppt = window.presentor('presentor'); 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function newEffect(div_slideIdSrc, div_slideIdDest) { 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Write your magical code to tranform div_slideIdSrc to div_slideIdDest 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ppt.registerExternalEffects('new_effect', newEffect); 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;}); 
+					<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

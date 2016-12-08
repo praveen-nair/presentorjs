@@ -1,0 +1,125 @@
+body {
+	height: 90%;
+}
+
+#presentor {
+	width: 100%;
+	height: 100%;
+	align-content: center;
+	text-align: center;
+	visibility: hidden;
+}
+
+.presentor_hideSlide {
+	visibility: hidden;
+}
+
+.presentor_showSlide {
+	visibility: visible;
+}
+.presentor_notSupported {
+	background-color: #e5e5f4;
+	color: #ff0000;
+	font-size: x-large;
+}
+
+.presentor_slide {
+	width: 99%;
+	background-color: #f0f5f9;
+	box-shadow: 1px 1px 10px #616161;
+	height: 95%; /*600px;*/
+}
+
+.presentor_title {
+	background-color: #5858e9;
+	box-shadow: 0px 0px 5px #000000;
+	height: 50px;
+	font-size: xx-large;
+    font-weight: bolder;
+    padding-top: 10px;
+}
+
+.presentor_slide > .presentor_content {
+	height: auto;
+	font-size: x-large;
+	text-align: left;
+    padding-top: 15px;
+    padding-left: 10px;
+}
+
+.presentor_leftArrow {
+	width: 0; 
+	height: 0; 
+	display: inline-block;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;  
+	border-right:8px solid white; 
+}
+
+.presentor_rightArrow {
+	width: 0; 
+	height: 0; 
+	display: inline-block;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;  
+	border-left:8px solid white; 
+}
+
+.presentor_toast {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 50px;
+}
+
+.presentor_toast.showToast {
+	visibility: visible;
+	-webkit-animation: toastFadeIn 0.5s, toastFadeOut 0.5s 2.5s;
+	animation: toastFadeIn 0.5s, toastFadeOut 0.5s 2.5s;
+}
+
+@-webkit-keyframes toastFadeIn {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes toastFadeIn {
+    from {
+    	bottom: 0; 
+    	opacity: 0;
+    }
+    to {
+    	bottom: 50px; 
+    	opacity: 1;
+    }
+}
+
+@-webkit-keyframes toastFadeOut {
+    from {
+    	bottom: 50px; 
+    	opacity: 1;
+    }
+    to {
+    	bottom: 0; 
+    	opacity: 0;
+    }
+}
+
+@keyframes toastFadeOut {
+    from {
+    	bottom: 50px; 
+    	opacity: 1;
+    }
+    to {
+    	bottom: 0; 
+    	opacity: 0;
+    }
+}
